@@ -1,0 +1,13 @@
+#display {
+    border: solid 1px black;
+    min-width: 20px;
+    min-height: 30px;
+}
+
+#container {
+    display: flex;
+	flex-wrap: wrap;
+    width: 100px;
+	justify-content: center;
+	align-items: center;
+}
