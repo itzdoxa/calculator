@@ -1,7 +1,11 @@
-const numbers = document.querySelector("#numbers");
+const keypad = document.querySelector("#keypad");
 const display = document.querySelector("#display");
 const plus = document.querySelector("#plus");
 const equals = document.querySelector("#equals");
+const minus = document.querySelector("#minus");
+const multi = document.querySelector("#multiply");
+const division = document.querySelector("#division");
+const clear = document.querySelector("#clear");
 
 function sum(a, b){
     return Number(a) + Number(b);
@@ -22,44 +26,85 @@ let opt;
 let displayNum;
 let digit;
 
-numbers.addEventListener('click', function(){
+keypad.addEventListener('click', function(){
     if(event.target.classList.contains("digit")) {
         digit = event.target.textContent;
-        display.textContent += digit;
-        displayNum = display.textContent;
-        console.log("numbers event " + displayNum);
+        if(event.target.classList.contains("period") && display.textContent.includes(".")) return;
+           display.textContent += digit;
+           displayNum = display.textContent;
+        console.log("no. selected on keypad: " + displayNum);
     };  
 });
 
 plus.addEventListener('click', function(){
-       num1 = displayNum;
+       num1 = display.textContent;
        opt = "+";
        display.textContent = "";
        displayNum = "";
-       console.log(opt)
        console.log("num1 " + num1);
+       console.log("operation to perform " + opt)
 });
 
-equals.addEventListener('click', function(){
-       let num2 = displayNum;        
+division.addEventListener('click', function(){
+    num1 = display.textContent;
+    opt = "/";
+    display.textContent = "";
+    displayNum = "";
+    console.log("num1 " + num1);
+    console.log("operation to perform " + opt)
+});
+
+minus.addEventListener('click', function(){
+    num1 = display.textContent;
+    opt = "-";
+    display.textContent = "";
+    displayNum = "";
+    console.log("num1 " + num1);
+    console.log("operation to perform " + opt)
+});
+
+multi.addEventListener('click', function(){
+    num1 = display.textContent;
+    opt = "*";
+    display.textContent = "";
+    displayNum = "";
+    console.log("num1 " + num1);
+    console.log("operation to perform " + opt)
+});
+
+equals.addEventListener('click', function(){      
+       let num2 = display.textContent;
        console.log("num2 " + num2);
-       console.log("num1 in equals " + num1);
        display.textContent = operate(num1, opt, num2);
+       console.log("num1: " + num1 + " " + "num2: " + num2);
+});
+
+clear.addEventListener('click', function(){
+    num1 = "";
+    num2 = "";
+    opt = "";
+    display.textContent = "";
 });
 
 function operate(x, operator, y){
  if(operator == "+"){
-    let result =sum(x,y);
+    let result = sum(x,y);
     console.log(result);
-     return result;
+     return Number(result.toFixed(2));
    };
  if(operator == "-"){
-    console.log(subtract(x,y))
+    let result = subtract(x,y);
+    console.log(result);
+     return Number(result.toFixed(2));
    };
  if(operator == "*"){
-    console.log(multiply(x,y))
+    let result = multiply(x,y);
+    console.log(result);
+     return Number(result.toFixed(2));
    };
  if(operator == "/"){
-    console.log(divide(x,y))
+    let result = divide(x,y);
+    console.log(result);
+     return Number(result.toFixed(2));
    };
 };
