@@ -2,35 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calculator</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
- <div id="operation"></div>
- <div id="display"></div>
+   <div id="calculator">
+
+      <div id="operationLog"></div>
+      <div id="display"></div>
  
-  <div id="container"> 
-          <button id="plus">+</button>
-          <button id="minus">-</button>
-          <button id="multiply">*</button>
-          <button id="division">/</button>  
-       <div id="keypad">    
-          <button class="digit">7</button>
-          <button class="digit">8</button>
-          <button class="digit">9</button>
-          <button class="digit">4</button>
-          <button class="digit">5</button>
-          <button class="digit">6</button>
-          <button class="digit">1</button>
-          <button class="digit">2</button>
-          <button class="digit">3</button>
-          <button class="digit">0</button>
-          <button class="digit period">.</button>  
-          <button id="equals">=</button>
-          <button id="clear">clear</button>
-       </div>          
-  </div>
+      <div id="container"> 
+           <div id="keypad">   
+              <button class="digit">7</button>
+              <button class="digit">8</button>
+              <button class="digit">9</button>
+              <button class="digit">4</button>
+              <button class="digit">5</button>
+              <button class="digit">6</button>
+              <button class="digit">1</button>
+              <button class="digit">2</button>
+              <button class="digit">3</button>
+              <button class="digit">0</button>
+              <button class="digit period">.</button>
+              <button class="digit delete">del</button>  
+              <button id="clear" class="hello">AC</button>
+              <button id="equals" class="hello">=</button>
+           </div>
+           <div id="operations">
+               <button id="plus" class="operator">+</button>
+               <button id="minus" class="operator">-</button>
+               <button id="multiply" class="operator">*</button>
+               <button id="division" class="operator">/</button>  
+          </div> 
+      </div>
+
+   </div>
+
 </body>
 </html>

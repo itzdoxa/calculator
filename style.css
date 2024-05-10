@@ -1,13 +1,42 @@
+#calculator {
+   width: 500px;
+   height: 500px;
+}
+
 #display {
     border: solid 1px black;
     min-width: 20px;
     min-height: 30px;
 }
 
+#operationLog {
+        border: solid 1px black;
+        min-width: 20px;
+        min-height: 30px;
+}
 #container {
     display: flex;
-	flex-wrap: wrap;
-    width: 100px;
-	justify-content: center;
-	align-items: center;
+    flex-wrap: wrap;
+}
+.hello {
+    flex: 1 1 33.3333%
+}
+.digit {
+    flex: 0 0 33.3333%;
+}
+.operator {
+    flex: 0 0 50%;
+    height: 175px;
+}
+#keypad {
+    display: flex;
+    width: 350px;
+    height: 350px;
+    flex-wrap: wrap;
+}
+#operations {
+    display: flex;
+    width: 150px;
+    height: 350px;
+    flex-wrap: wrap;
 }

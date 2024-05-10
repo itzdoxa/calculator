@@ -1,16 +1,13 @@
 const keypad = document.querySelector("#keypad");
-const display = document.querySelector("#display");
-const plus = document.querySelector("#plus");
+const operations = document.querySelector("#operations");
 const equals = document.querySelector("#equals");
-const minus = document.querySelector("#minus");
-const multi = document.querySelector("#multiply");
-const division = document.querySelector("#division");
 const clear = document.querySelector("#clear");
-const operationLog = document.querySelector("#operation");
+const display = document.querySelector("#display");
+const operationLog = document.querySelector("#operationLog");
 
 function sum(a, b){
     return Number(a) + Number(b);
-   //   return a + b;  string: 7 + 8 = 78
+   // or else  return a + b;  string: 7 + 8 = 78
 };
 function subtract(a, b){
     return a - b;
@@ -40,58 +37,27 @@ keypad.addEventListener('click', function(){
         display.textContent += digit;
         displayNum = display.textContent; 
         console.log("no. selected on keypad: " + displayNum);
-        console.log("display num is " + typeof(displayNum));
+        console.log("display number is a: " + typeof(displayNum));
     };  
 });
 
-plus.addEventListener('click', function(){
+operations.addEventListener('click', function(){
     click = 0;
     num1 = display.textContent; // string
-    optr = "+";
+    optr = event.target.textContent;
     display.textContent = "";
     displayNum = "";
-    console.log("num1 " + num1 + " " + typeof(num1));
-    console.log("operation to perform " + optr);
+    console.log("num1: " + num1 + " is a: " + typeof(num1));
+    console.log("operation to perform: " + optr + typeof(optr));
 });
 
-division.addEventListener('click', function(){
-    click = 0;
-    num1 = display.textContent;
-    optr = "/";
-    display.textContent = "";
-    displayNum = "";
-    console.log("num1 " + num1);
-    console.log("operation to perform " + optr);
-});
-
-minus.addEventListener('click', function(){
-    click = 0;
-    num1 = display.textContent;
-    optr = "-";
-    display.textContent = "";
-    displayNum = "";
-    console.log("num1 " + num1);
-    console.log("operation to perform " + optr);
-});
-
-multi.addEventListener('click', function(){
-       click = 0;
-       num1 = display.textContent;
-       optr = "*";
-       display.textContent = "";
-       displayNum = "";
-       console.log("num1 " + num1);
-       console.log("operation to perform " + optr);
-});
-
-const toFixedWithoutZeros = (num) =>
-    `${Number.parseFloat(num.toFixed(4))}`;
+const toFixedWithoutZeros = (num) => Number.parseFloat(num.toFixed(4));
 
 let repeatValue;
 equals.addEventListener('click', function(){      
     click++;
     console.log("click count" + click)
-    
+
     if(click > 1) { 
         num1 = result;
      //   display.textContent = toFixedWithoutZeros(Number(operate(num1, optr, repeatValue)));
@@ -104,22 +70,29 @@ equals.addEventListener('click', function(){
         operationLog.textContent = xnum1 + " " + optr + " " + yvalue; // i dont want this to overflow the calculator display,
                                                       // so i have to use less decimal places
         return;
+
     } else {
         let num2 = display.textContent; // string
+        if (!num2) {
+            if (optr === "-" || optr === "+") {
+                num2 = 0;
+            } else if (optr === "*" || optr === "/") {
+                num2 = 1;
+            }
+        }
         repeatValue = Number(num2);  // number
 
-        console.log("num2 " + num2 + typeof(num2));
-
+        console.log("num2 " + num2 + " is a: " + typeof(num2));
+   
      //   display.textContent = toFixedWithoutZeros(Number(operate(Number(num1), optr, Number(num2))));
-     display.textContent = toFixedWithoutZeros(operate(num1, optr, num2));
+        display.textContent = toFixedWithoutZeros(operate(num1, optr, num2));
 
         console.log(display.textContent + ' display no. is ' + typeof(display.textContent))
-        console.log("num1: " + num1 + " " + "num2: " + num2);
+        console.log("num1: " + num1 + "; " + "num2: " + num2);
 
         operationLog.textContent = num1 + " " + optr + " " + num2;
     }
 });
-
 
 clear.addEventListener('click', function(){
       click = 0;
@@ -158,3 +131,8 @@ function operate(x, operator, y){
 
 // add feature: allow user to input a big expresion 
 // like in the google calc rather than a pair of numbers.
+
+// when the user picks num1 and opt and then presses equals without selecting
+// a second number,
+//make the result the same (+-0 and */1)
+// or dont do any operation
