@@ -1,32 +1,56 @@
-#calculator {
-   width: 500px;
+#calculator { 
    height: 500px;
-}
+   width: 500px; 
+   border: solid black 10px;
+ } 
 
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
 #display {
-    border: solid 1px black;
+    border: solid 0.1px black;
     min-width: 20px;
-    min-height: 30px;
+    min-height: 15%;
+    /* min-height: 50px; */
 }
-
+button {
+    font-size: larger;
+}
+#display,
+#operationLog {
+    padding: 10px; 
+    font-size: 30px;
+    box-sizing: border-box;
+}
 #operationLog {
         border: solid 1px black;
         min-width: 20px;
-        min-height: 30px;
+        height: 15%;
+        color: 	rgb(85,85,85);
 }
 #container {
     display: flex;
-    flex-wrap: wrap;
+    min-height: 70%;
 }
-.hello {
-    flex: 1 1 33.3333%
-}
-.digit {
+
+.digit { 
     flex: 0 0 33.3333%;
 }
+.key {
+    flex: 0 0 33.3333%;
+}
+.zero {
+    flex: 0 0 66.6666%;
+}
 .operator {
-    flex: 0 0 50%;
-    height: 175px;
+    flex: 0 0 100%;
+}
+#equals {
+    flex: 0 0 100%;
 }
 #keypad {
     display: flex;
@@ -39,4 +63,15 @@
     width: 150px;
     height: 350px;
     flex-wrap: wrap;
+}
+#operations button {
+     background-color: rgb(255, 159, 10);
+     border-style: solid;
+     border-width: 1px;
+ 
+}
+.key  {
+    background-color: rgb(211, 211, 211);
+    border-style: solid;
+    border-width: 1px; 
 }
